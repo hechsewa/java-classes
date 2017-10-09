@@ -2,14 +2,14 @@ package matrix;
 import java.io.*;
 
 public class Matrix {
-	private static int[][] matrix;
+	private int[][] matrix;
 	
 	public Matrix(int[][] _matrix) { //konstruktor
 		matrix = _matrix;
 	}
 	
 	/*addiction*/
-	public static int[][] add(int[][] arr){
+	public int[][] add(int[][] arr){
 		//proceed if sizes are the same
 		if(matrix.length==arr.length && matrix[0].length==arr[0].length) {
 		
@@ -30,7 +30,7 @@ public class Matrix {
 	}
 	
 	/*substraction*/
-	public static int[][] sub(int[][] arr){
+	public int[][] sub(int[][] arr){
 		//proceed if sizes are the same
 		if(matrix.length==arr.length && matrix[0].length==arr[0].length) {
 		
@@ -51,7 +51,7 @@ public class Matrix {
 	}
 	
 	/*multiplication*/
-	public static int[][] mul(int[][] arr){
+	public int[][] mul(int[][] arr){
 		//check if columns of A is equal to rows of B
 		if(matrix[0].length != arr.length || matrix.length != arr[0].length) {
 			System.out.println("wrong sizes");
