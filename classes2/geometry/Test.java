@@ -16,12 +16,53 @@ import java.util.Scanner;
 */
 
 public class Test{
-	LinkedList<Punkt3D> punkty = new LinkedList<Punkt3D>();
+	static LinkedList<Punkt3D> punkty = new LinkedList<Punkt3D>();
 	
 	public Test() {
 	}
 	
-	public void input3D(Punkt3D pkt) {
+	public static void menu() {
+		//Test tester = new Test();
+		System.out.println("Menu: ");
+		System.out.println("1. Input 3D point");
+		System.out.println("2. Show all points of the list");
+		System.out.println("3. Calculate distance between two points");
+		System.out.println("4. Quit");
+		
+		int choice = 0;
+		Scanner menu = new Scanner(System.in);
+		choice = menu.nextInt();
+		
+		switch(choice) {
+		case 1:
+			Punkt3D pkt = new Punkt3D(0,0,0);
+			input3D(pkt);
+			punkty.add(pkt);
+			System.out.println("Saved!");
+			System.out.println("What next?");
+			menu();
+			break;
+		case 2:
+			showList();
+			System.out.println("What next?");
+			menu();
+			break;
+		case 3: 
+			calculateDist();
+			System.out.println("What next?");
+			menu();
+			break;
+		case 4: 
+			return;
+		default: 
+			System.out.println("Wrong input!");
+			System.out.println("What next?");
+			menu();
+			break;
+	}
+	}
+	
+	public static void input3D(Punkt3D pkt) {
 		Scanner in = new Scanner(System.in);
 		System.out.println("Enter the value of X: ");
 		pkt.SetX(in.nextInt());
@@ -32,7 +73,7 @@ public class Test{
 
 	}
 	
-	public void showList() {
+	public static void showList() {
 		if(punkty.isEmpty()) {
 			System.out.println("List is empty");
 			return;
@@ -46,7 +87,7 @@ public class Test{
 		}
 	}
 	
-	public void calculateDist() {
+	public static void calculateDist() {
 		Punkt3D pkt1 = new Punkt3D(0,0,0);
 		Punkt3D pkt2 = new Punkt3D(0,0,0);
 		
@@ -61,42 +102,7 @@ public class Test{
 	}
 	
 	public static void main(String [] args){
-		Test tester = new Test();
-		
-		/*Punkt3D pkta = new Punkt3D(1,1,1);
-		Punkt3D pktb = new Punkt3D(2,2,3);
-		tester.punkty.add(pkta);
-		tester.punkty.add(pktb);*/
-		
-		System.out.println("Menu: ");
-		System.out.println("1. Input 3D point");
-		System.out.println("2. Show all points of the list");
-		System.out.println("3. Calculate distance between two points");
-		System.out.println("4. Quit");
-		
-		int choice = 0;
-		Scanner menu = new Scanner(System.in);
-		choice = menu.nextInt();
-		
-		switch(choice) {
-		case 1:
-			Punkt3D pkt = new Punkt3D(0,0,0);
-			tester.input3D(pkt);
-			tester.punkty.add(pkt);
-			System.out.println("Saved!");
-			break;
-		case 2:
-			tester.showList();
-			break;
-		case 3: 
-			tester.calculateDist();
-			break;
-		case 4: 
-			return;
-		default: 
-			System.out.println("Wrong input!");
-			break;
-		}
+		menu();
 	}
 	
 	
