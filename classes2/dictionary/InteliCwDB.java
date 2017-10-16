@@ -1,5 +1,8 @@
 package dictionary;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Collections;
 import java.util.LinkedList;
 import dictionary.Entry;
 import java.util.Random;
@@ -7,8 +10,8 @@ import java.util.regex.*;
 
 
 public class InteliCwDB extends CwDB {
-	public InteliCwDB(String filename) {
-		super(filename);
+	public InteliCwDB() {
+		super();
 	}
 	
 	public LinkedList<Entry> findAll(String pattern){
@@ -62,5 +65,27 @@ public class InteliCwDB extends CwDB {
 		return ent;
 	}
 	
-	public void add(String word, String clue) {}
+	/*public void add(String word, String clue) {
+		Entry ent = new Entry(word, clue);
+		dict.add(ent);
+		int i = 0;
+		while(dict.get(i).getWord().compareTo(word) <= 0) {
+			if(dict.get(i).getWord().compareTo(word) <= 0) {
+				i++; 
+			}
+				else dict.add(i, dict.getLast());
+			}
+		}
+		//dodaje w porzadku alfabetycznym*/
+	
+	public static void main(String [] args) throws IOException{
+		InteliCwDB cwdb = new InteliCwDB();
+		cwdb.createDB("C:/Users/asus1/Desktop/studia/s3/java-classes/classes2/dictionary/cwdb.txt");
+		//cwdb.add("Anitka", "przemi³a dziewczyna");
+		System.out.println(cwdb.get("bafomet").getClue());
+		cwdb.saveDB("C:/Users/asus1/Desktop/studia/s3/java-classes/classes2/dictionary/cwdb.txt");
+		System.out.println(cwdb.getSize());
+		Entry entRandom = cwdb.getRandom();
+		System.out.println("Random entry: " + entRandom.getWord() + " " + entRandom.getClue());
+	}
 }
