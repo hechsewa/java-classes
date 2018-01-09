@@ -1,2 +1,2 @@
 # java-classes
-A repository of exercises for java classes (II winter semester, 2017/18)
+A repository of exercises for java classes (2017/18)
